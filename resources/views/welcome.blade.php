@@ -1,6 +1,5 @@
 <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
     <!-- Styles -->
     <style>
         html, body {
@@ -54,26 +53,15 @@
             margin-bottom: 30px;
         }
     </style>
-<div class="flex-center position-ref">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/welcome') }}">Home</a>
-            @else
-                <a href="{{ route('login') }}">Login</a>
 
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                @endif
-            @endauth
-        </div>
-    @endif
-</div>
 @extends('parent')
 @section('main')
     <div align="right">
         <a href="{{route('welcome.create')}}" class="btn btn-success">Add</a>
     </div>
+
+
+
     @if ($message = Session::get('success'))
         <div class="alert-success">
             <p>{{$message}}</p>
@@ -122,5 +110,5 @@
             @endforeach
     </table>
 @endsection
-{!! $data->links() !!}}
+
 

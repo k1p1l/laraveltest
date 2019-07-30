@@ -29,10 +29,10 @@
         <div class="font-weight-normal">
             <label class="col-md-4 text-left">Category</label>
             <div class="col-md-8">
-                <select name="category">
+                <select name="category_id">
                     <option selected disabled>SELECT</option>
                     <?php foreach ($dataCategory = \App\Category::all() as $row):?>
-                    <option>{{$row->title}}</option>
+                    <option value="{{$row->id}}">{{$row->title}}</option>
                      <?php endforeach;?>
                 </select>
             </div>
