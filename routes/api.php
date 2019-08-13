@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +15,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 Route::post('login', 'APILoginController@login');
+Route::post('register', 'ApiController@register');
 
-Route::middleware('jwt.auth')->get('users', function () {
+Route::group(['middleware' => 'jwt.auth:api'], function () {
+        Route::delete('/delete/{id}', 'ItemsController@destroy')->middleware('checkAdmin');
+        Route::post('/edit/{id}', 'ItemsController@update')->middleware('checkAdmin');
+});
+Route::post('/add', 'ItemsController@store')->middleware('jwt.auth:api');
+
+Route::middleware('jwt.auth:api')->get('users', function () {
     return auth('api')->user();
 });

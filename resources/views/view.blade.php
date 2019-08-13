@@ -1,16 +1,29 @@
 @extends('parent')
 @section('main')
-<div class="jumbotron text-center">
-    <div align="right">
-        <a href="{{route('welcome.index')}}" class="btn btn-default">Back</a>
+    <style>
+        h2 {
+            color: #5a6268
+        }
+
+        h3 {
+            color: #38c172;
+        }
+    </style>
+    <div class="jumbotron text-center">
+        <div align="right">
+            <a href="{{route('welcome.index')}}" class="btn btn-default btn-success">Back</a>
+        </div>
+        <br/>
+        <h2>Title:</h2>
+        <h3>{{$item->title}}</h3>
+        <br/>
+        <div class="border-info" align="center">
+            <img src="{{ URL::to('/images/'.$item->image)}}" width="230px" class="img-thumbnail"/>
+        </div>
+        <h2>Description-<br/></h2>
+        <h3>{{$item->description}}</h3>
+        <h2>Name-</h2>
+        <h3>{{$user->name}}</h3>
     </div>
-    <br/>
-    <h2>Title-{{$data->title}}</h2>
-    <br/>
-    <img src="{{ URL::to('/images/'.$data->image)}}" class="img-thumbnail"/>
-    <h3>Description-<br/>
-        {{$data->description}}</h3>
-    <h3>Name-<h1>{{$user_info->name}}</h1></h3>
-</div>
 
 @endsection
